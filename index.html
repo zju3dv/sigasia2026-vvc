@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2nd Volumetric Video Challenge | SIGGRAPH Asia 2026 Workshop</title>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; }
+        .hero-gradient::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(90deg, rgba(28, 22, 58, .84), rgba(28, 22, 58, .18)), url('assets/images/vvc26-teaser.jpg'); background-size: cover; background-position: center; }
+        .glass-card { background: rgba(255,255,255,.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.3); box-shadow: 0 8px 32px rgba(31,38,135,.08); transition: all .3s ease; }
+        .glass-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(31,38,135,.12); }
+        nav a { position: relative; font-weight: 500; color: #4a5568; transition: color .2s ease; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, #667eea, #764ba2); transition: width .3s ease; }
+        nav a:hover { color: #667eea; }
+        nav a:hover::after { width: 100%; }
+        .section-heading { font-size: 2rem; font-weight: 700; color: #2d3748; margin-bottom: 1.5rem; position: relative; display: inline-block; }
+        .section-heading::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 2px; }
+        .track-card { border-top: 4px solid transparent; background: white; border-radius: 12px; padding: 2rem; transition: all .3s ease; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+        .track-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+        .track-card.compression { border-top-color: #667eea; }
+        .track-card.sparse-view { border-top-color: #764ba2; }
+        .primary-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: .75rem 2rem; border-radius: 8px; font-weight: 600; transition: all .3s ease; display: inline-block; text-decoration: none; box-shadow: 0 4px 15px rgba(102,126,234,.3); }
+        .primary-button:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(102,126,234,.4); }
+        .timeline-item { position: relative; padding-left: 3rem; margin-bottom: 2rem; }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: -2rem; width: 2px; background: #e2e8f0; }
+        .timeline-item:last-child::before { display: none; }
+        .timeline-dot { position: absolute; left: -6px; top: 0; width: 14px; height: 14px; border-radius: 50%; background: white; border: 3px solid #667eea; z-index: 1; }
+        .code-block { background: #1e2837; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: .875rem; line-height: 1.6; }
+        .code-block pre { margin: 0; }
+        .schedule-table { overflow: hidden; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+        .schedule-table thead { background: linear-gradient(135deg, #101820 0%, #667eea 100%); color: white; }
+        .speaker-card { background: white; border-radius: 12px; padding: 2rem; text-align: center; transition: all .3s ease; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+        .speaker-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+        .avatar-placeholder { width: 96px; height: 96px; border-radius: 999px; margin: 0 auto 1rem; display: grid; place-items: center; color: #667eea; font-weight: 800; background: linear-gradient(135deg, #eef2ff, #f5f3ff); border: 3px solid #e9d5ff; }
+        .person-photo { width: 96px; height: 96px; border-radius: 999px; margin: 0 auto 1rem; object-fit: cover; }
+        .tba-box { border: 2px dashed #c4b5fd; background: #f5f3ff; color: #6d28d9; border-radius: 12px; padding: 2.5rem; text-align: center; font-size: 1.5rem; font-weight: 800; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <header class="glass-card sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#overview" class="flex items-center gap-3 no-underline">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-700 text-white grid place-items-center font-extrabold">VVC</div>
+                <div class="leading-tight">
+                    <div class="font-extrabold text-gray-800">Volumetric Video Challenge</div>
+                    <div class="text-sm text-gray-500">SIGGRAPH Asia 2026 Workshop</div>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#overview">Overview</a>
+                <a href="#challenges">Challenges</a>
+                <a href="#dataset">Dataset</a>
+                <a href="#evaluation">Evaluation</a>
+                <a href="#dates">Important Dates</a>
+                <a href="#awards">Awards</a>
+                <a href="#speakers">Speakers</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#organizers">Organizers</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100" type="button" aria-label="Open menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white/90 backdrop-blur-sm border-t">
+            <a href="#overview" class="block py-3 text-gray-600 hover:text-purple-600">Overview</a>
+            <a href="#challenges" class="block py-3 text-gray-600 hover:text-purple-600">Challenges</a>
+            <a href="#dataset" class="block py-3 text-gray-600 hover:text-purple-600">Dataset</a>
+            <a href="#evaluation" class="block py-3 text-gray-600 hover:text-purple-600">Evaluation</a>
+            <a href="#dates" class="block py-3 text-gray-600 hover:text-purple-600">Important Dates</a>
+            <a href="#awards" class="block py-3 text-gray-600 hover:text-purple-600">Awards</a>
+            <a href="#speakers" class="block py-3 text-gray-600 hover:text-purple-600">Speakers</a>
+            <a href="#schedule" class="block py-3 text-gray-600 hover:text-purple-600">Schedule</a>
+            <a href="#organizers" class="block py-3 text-gray-600 hover:text-purple-600">Organizers</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-gradient text-white py-16 md:py-24 lg:py-28 relative">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold mb-5">2nd Volumetric Video Challenge</h1>
+                <p class="text-xl md:text-2xl font-light opacity-90 mb-8">SIGGRAPH Asia 2026 Workshop</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-lg font-medium">KLCC, Kuala Lumpur, Malaysia</span>
+                    <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-lg font-medium">December 1-4, 2026</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-6">
+            <section id="overview" class="pt-12">
+                <h2 class="section-heading">Overview</h2>
+                <div class="glass-card rounded-2xl p-8">
+                    <p class="text-xl leading-relaxed mb-6 text-gray-700">
+                        The second Volumetric Video Challenge focuses on two practical problems for immersive media systems: efficient compression and sparse-view reconstruction.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="track-card compression">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Compression Track</h3>
+                            <p class="text-gray-600">Compress dynamic 4DGS-style reconstructions while preserving rendering quality under an average budget of <b>200 KB/frame</b>.</p>
+                        </div>
+                        <div class="track-card sparse-view">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Sparse-View Track</h3>
+                            <p class="text-gray-600">Reconstruct dynamic volumetric humans from <b>6 calibrated training views</b>. This year all tracks reconstruct full RGB images with background.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border-l-4 border-purple-500">
+                        <p class="text-gray-700 italic">No masks are provided in VVC26. Evaluation is performed on full images, including background regions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dates" class="pt-20">
+                <h2 class="section-heading">Important Dates (AoE)</h2>
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="space-y-6">
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Call for Registration Released</h4><p class="text-gray-600">Registration opens</p></div><span class="text-purple-600 font-semibold">July 10, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Validation Data &amp; Scripts Released</h4><p class="text-gray-600">Registered teams receive validation data and evaluation scripts</p></div><span class="text-purple-600 font-semibold">July 17, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Registration Closes</h4><p class="text-gray-600">Final challenge rules confirmed</p></div><span class="text-purple-600 font-semibold">August 15, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Submissions &amp; Draft Reports Due</h4><p class="text-gray-600">Final participant submissions close</p></div><span class="text-purple-600 font-semibold">September 8, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Results Confirmed</h4><p class="text-gray-600">Winning teams notified after organizer evaluation</p></div><span class="text-purple-600 font-semibold">September 11, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Final ACM-Formatted Reports Due</h4><p class="text-gray-600">Winning teams submit final reports</p></div><span class="text-purple-600 font-semibold">September 18, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Final Documents Uploaded to TAPS</h4><p class="text-gray-600">Official proceedings package submitted</p></div><span class="text-purple-600 font-semibold">September 23, 2026</span></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="challenges" class="pt-20">
+                <h2 class="section-heading">Challenge Tracks</h2>
+                <p class="text-lg text-gray-600 mb-8 text-center max-w-3xl mx-auto">The challenge features two tracks focusing on <b>compression</b> and <b>sparse-view reconstruction</b> for volumetric videos.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="track-card compression">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Compression Track</h3>
+                        <p class="text-gray-600 mb-4">Compress dynamic 4DGS-style models under an average <b>200 KB/frame</b> budget while maintaining high-quality full-image rendering.</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li><b>Input:</b> calibrated multi-view RGB videos</li>
+                            <li><b>Baseline:</b> baseline method will be provided</li>
+                            <li><b>Output:</b> rendered held-out test views, model, scripts, report</li>
+                        </ul>
+                    </div>
+                    <div class="track-card sparse-view">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Sparse-View Track</h3>
+                        <p class="text-gray-600 mb-4">Reconstruct dynamic volumetric humans from <b>6 calibrated training views</b> and render held-out test views.</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li><b>Input:</b> 6-view calibrated RGB videos</li>
+                            <li><b>Mask policy:</b> no masks provided</li>
+                            <li><b>Output:</b> rendered held-out test views and report</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dataset" class="pt-20">
+                <h2 class="section-heading">Dataset</h2>
+                <div class="glass-card rounded-2xl p-8">
+                    <p class="text-lg text-gray-700 mb-6">The VVC26 dataset contains calibrated dynamic multi-view RGB videos. Unlike the previous edition, <b>masks are not provided</b>; all methods reconstruct and render the complete scene with background.</p>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-5 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Compression Track</h3>
+                            <p class="text-gray-600">Training RGB videos, train/test camera parameters, time offsets, and baseline assets will be released for each sequence.</p>
+                        </div>
+                        <div class="p-5 bg-pink-50 rounded-xl border-l-4 border-pink-500">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2">Sparse-View Track</h3>
+                            <p class="text-gray-600">Only 6 calibrated training views are released for reconstruction. Held-out test-view camera parameters are provided for rendering.</p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Compression Track Structure</h3>
+                            <div class="code-block mono-font"><pre>sequence/
+├── images/              # training-view RGB frames
+│   ├── 00/000000.jpg
+│   └── ...
+├── train_intri.yml      # training camera intrinsics
+├── train_extri.yml      # training camera extrinsics
+├── test_intri.yml       # held-out test camera intrinsics
+├── test_extri.yml       # held-out test camera extrinsics
+├── time_offsets.json    # camera/frame synchronization
+└── baseline/            # baseline assets, if provided</pre></div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Sparse-View Track Structure</h3>
+                            <div class="code-block mono-font"><pre>sequence/
+├── images/              # 6 training-view RGB frames
+│   ├── 00/000000.jpg
+│   └── ...
+├── train_intri.yml      # 6-view training intrinsics
+├── train_extri.yml      # 6-view training extrinsics
+├── test_intri.yml       # held-out test camera intrinsics
+├── test_extri.yml       # held-out test camera extrinsics
+└── time_offsets.json    # camera/frame synchronization</pre></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                        <p class="text-sm text-gray-700"><strong>Note:</strong> There is no <span class="mono-font">masks/</span> folder in VVC26. Rendered outputs should include foreground and background.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="evaluation" class="pt-20">
+                <h2 class="section-heading">Evaluation</h2>
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                        <p class="text-gray-700"><strong>Metrics:</strong> PSNR, SSIM, and LPIPS on official held-out test views.</p>
+                        <p class="text-gray-700"><strong>Region:</strong> Full RGB image evaluation, including background. No foreground masks are used.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Compression Track</h3>
+                            <div class="p-4 bg-gray-100 rounded-lg mono-font text-sm mb-4">Rank = [rank(PSNR) + rank(SSIM) + rank(LPIPS)] / 3</div>
+                            <p class="text-gray-600 mb-3">A submission is valid only if its content-dependent representation is smaller than an average <b>200 KB/frame</b>. Invalid submissions are excluded from the ranking.</p>
+                            <p class="text-gray-600"><b>Size</b> counts all content-dependent files required for rendering. Shared content-agnostic code or pretrained backbones may be excluded after organizer review.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Sparse-View Track</h3>
+                            <div class="p-4 bg-gray-100 rounded-lg mono-font text-sm mb-4">Rank = [rank(PSNR) + rank(SSIM) + rank(LPIPS)] / 3</div>
+                            <p class="text-gray-600">Entries are ranked by full-image reconstruction quality under the 6-view input setting. The test views are held out and evaluated by the organizers.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="details" class="pt-20">
+                <h2 class="section-heading">Detailed Requirements</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6"><span class="inline-block w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-600 mr-3"></span>Compression Track</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800 mb-3">Provided Data</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>Training-view RGB videos or frames.</li>
+                                    <li>Training and held-out test camera parameters.</li>
+                                    <li>Time offsets or synchronization metadata when needed.</li>
+                                    <li>Baseline assets and rendering script, if released.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800 mb-3">Requirements</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>Final representation must be below an average <b>200 KB/frame</b>.</li>
+                                    <li>Render full RGB images for all official test views.</li>
+                                    <li>Submit model artifacts, rendering scripts, environment file, rendered results, and a draft technical report.</li>
+                                    <li>Winning teams submit final ACM-formatted reports.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6"><span class="inline-block w-1 h-6 bg-gradient-to-b from-purple-600 to-pink-600 mr-3"></span>Sparse-View Track</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800 mb-3">Provided Data</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>6 calibrated training-view RGB videos or frames.</li>
+                                    <li>Training camera intrinsics and extrinsics for the 6 views.</li>
+                                    <li>Held-out test camera intrinsics and extrinsics for rendering.</li>
+                                    <li>Time offsets or synchronization metadata when needed.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800 mb-3">Requirements</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>Use only the provided sparse training views for reconstruction.</li>
+                                    <li>Render full RGB images for all official test views.</li>
+                                    <li>No foreground masks are provided or used for evaluation.</li>
+                                    <li>Submit rendered results and a draft technical report.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="submission" class="pt-20">
+                <h2 class="section-heading">Submission Guidelines</h2>
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="tba-box mb-6">TBA</div>
+                    <p class="text-center text-lg text-gray-700">
+                        Registration Form:
+                        <a href="https://forms.gle/iqTJjmLCxTYzYVHK6" target="_blank" rel="noopener" class="text-purple-600 hover:text-purple-800 font-bold underline">https://forms.gle/iqTJjmLCxTYzYVHK6</a>
+                    </p>
+                </div>
+            </section>
+
+            <section id="awards" class="pt-20">
+                <h2 class="section-heading">Awards</h2>
+                <div class="text-center mb-8">
+                    <p class="text-lg text-gray-600">Each track features two prizes.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                    <div class="speaker-card"><h3 class="text-2xl font-bold text-gray-800 mb-2">First Prize</h3><p class="text-4xl font-bold text-purple-600">$2,500</p><p class="text-gray-500 mt-2">Per track</p></div>
+                    <div class="speaker-card"><h3 class="text-2xl font-bold text-gray-800 mb-2">Second Prize</h3><p class="text-4xl font-bold text-gray-600">$1,500</p><p class="text-gray-500 mt-2">Per track</p></div>
+                </div>
+            </section>
+
+            <section id="schedule" class="pt-20">
+                <h2 class="section-heading">Workshop Schedule</h2>
+                <div class="glass-card rounded-2xl p-8"><div class="tba-box">Schedule TBA</div></div>
+            </section>
+
+            <section id="speakers" class="pt-20">
+                <h2 class="section-heading">Keynote Speakers</h2>
+                <div class="glass-card rounded-2xl p-8"><div class="tba-box">TBA</div></div>
+            </section>
+
+            <section id="organizers" class="pt-20">
+                <h2 class="section-heading">Organizers</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/organizer-zhiyuan-yu.jpeg" alt="Zhiyuan Yu"><h3 class="text-lg font-bold text-gray-800">Zhiyuan Yu</h3><p class="text-sm text-gray-600 mb-2">Zhejiang University</p><a href="https://fishfishson.github.io/" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/fengzeXie.png" alt="Fengze Xie"><h3 class="text-lg font-bold text-gray-800">Fengze Xie</h3><p class="text-sm text-gray-600 mb-2">Zhejiang University</p><a href="https://github.com/xfzlqyy" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/YinjiShenTu.jpg" alt="Yinji Shentu"><h3 class="text-lg font-bold text-gray-800">Yinji Shentu</h3><p class="text-sm text-gray-600 mb-2">Zhejiang University</p><a href="https://github.com/STLAND-admin" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/organizer-jiaming-sun.jpeg" alt="Jiaming Sun"><h3 class="text-lg font-bold text-gray-800">Jiaming Sun</h3><p class="text-sm text-gray-600 mb-2">4DV.ai</p><a href="https://jiamingsun.me/" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/organizer-siyu-zhang.jpeg" alt="Siyu Zhang"><h3 class="text-lg font-bold text-gray-800">Siyu Zhang</h3><p class="text-sm text-gray-600 mb-2">4DV.ai</p><a href="https://derizsy.github.io/" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/organizer-sida-peng.jpg" alt="Sida Peng"><h3 class="text-lg font-bold text-gray-800">Sida Peng</h3><p class="text-sm text-gray-600 mb-2">Zhejiang University</p><a href="https://pengsida.net/" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/organizer-ruizhen-hu.jpg" alt="Ruizhen Hu"><h3 class="text-lg font-bold text-gray-800">Ruizhen Hu</h3><p class="text-sm text-gray-600 mb-2">Shenzhen University</p><a href="https://csse.szu.edu.cn/staff/ruizhenhu/" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                    <div class="speaker-card"><img class="person-photo" src="assets/images/organizer-xiaowei-zhou.jpeg" alt="Xiaowei Zhou"><h3 class="text-lg font-bold text-gray-800">Xiaowei Zhou</h3><p class="text-sm text-gray-600 mb-2">Zhejiang University</p><a href="https://www.xzhou.me/" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">Homepage</a></div>
+                </div>
+            </section>
+
+            <section id="contact" class="pt-20">
+                <h2 class="section-heading inline-block">Contact</h2>
+                <div class="glass-card text-center rounded-2xl p-8 max-w-2xl mx-auto mt-8">
+                    <p class="text-lg text-gray-700">For any questions, please contact us at</p>
+                    <a href="mailto:siggraphasiavvc@gmail.com" class="inline-flex items-center mt-4 text-purple-600 hover:text-purple-800 font-medium text-lg">siggraphasiavvc@gmail.com</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t mt-20">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div><p class="text-gray-600 font-medium">SIGGRAPH Asia 2026 Workshop</p><p class="text-gray-500 text-sm">Kuala Lumpur, Malaysia - December 1-4, 2026</p></div>
+            <p class="text-gray-500 text-sm">© 2026 SIGGRAPH Asia Workshop Organizers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const button = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        if (button && menu) button.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
+</body>
+</html>
