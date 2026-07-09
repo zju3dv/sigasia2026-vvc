@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2nd Volumetric Video Challenge | SIGGRAPH Asia 2026 Workshop</title>
+    <link rel='icon' type='image/svg+xml' href='assets/images/favicon.svg'>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,8 +114,8 @@
                         </div>
                     </div>
                     <div class="mt-8 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border-l-4 border-purple-500">
-                        <p class="text-gray-700 italic mb-3">No masks are provided in VVC26. Evaluation is performed on full images, including background regions.</p>
-                        <p class="text-gray-700 italic">Winning teams' technical reports will be submitted through the SIGGRAPH Asia publication workflow and included in the SIGGRAPH Asia conference program/proceedings.</p>
+                        <p class="text-gray-700 italic mb-3">Evaluation is performed on full RGB images, including foreground and background regions.</p>
+                        <p class="text-gray-700 italic">Winning teams' technical reports will be included in the SIGGRAPH Asia workshop proceedings.</p>
                     </div>
                 </div>
             </section>
@@ -128,8 +129,8 @@
                         <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Registration Closes</h4><p class="text-gray-600">Final challenge rules confirmed</p></div><span class="text-purple-600 font-semibold">August 15, 2026</span></div></div>
                         <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Submissions &amp; Draft Reports Due</h4><p class="text-gray-600">Final participant submissions close</p></div><span class="text-purple-600 font-semibold">September 8, 2026</span></div></div>
                         <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Results Confirmed</h4><p class="text-gray-600">Winning teams notified after organizer evaluation</p></div><span class="text-purple-600 font-semibold">September 11, 2026</span></div></div>
-                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Final ACM-Formatted Reports Due</h4><p class="text-gray-600">Winning teams submit final ACM-formatted reports for SIGGRAPH Asia publication</p></div><span class="text-purple-600 font-semibold">September 18, 2026</span></div></div>
-                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Final Documents Uploaded to TAPS</h4><p class="text-gray-600">Final documents submitted through the official SIGGRAPH Asia publication workflow</p></div><span class="text-purple-600 font-semibold">September 23, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Final ACM-Formatted Reports Due</h4><p class="text-gray-600">Winning teams submit final ACM-formatted reports for the SIGGRAPH Asia workshop proceedings</p></div><span class="text-purple-600 font-semibold">September 18, 2026</span></div></div>
+                        <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Final Documents Uploaded to TAPS</h4><p class="text-gray-600">Final documents submitted through the official SIGGRAPH Asia workshop proceedings workflow</p></div><span class="text-purple-600 font-semibold">September 23, 2026</span></div></div>
                     </div>
                 </div>
             </section>
@@ -152,7 +153,6 @@
                         <p class="text-gray-600 mb-4">Reconstruct dynamic volumetric humans from <b>6 calibrated training views</b> and render held-out test views.</p>
                         <ul class="text-sm text-gray-600 space-y-2">
                             <li><b>Input:</b> 6-view calibrated RGB videos</li>
-                            <li><b>Mask policy:</b> no masks provided</li>
                             <li><b>Output:</b> rendered held-out test views and report</li>
                         </ul>
                     </div>
@@ -162,7 +162,7 @@
             <section id="dataset" class="pt-20">
                 <h2 class="section-heading">Dataset</h2>
                 <div class="glass-card rounded-2xl p-8">
-                    <p class="text-lg text-gray-700 mb-6">The VVC26 dataset contains calibrated dynamic multi-view RGB videos. Unlike the previous edition, <b>masks are not provided</b>; all methods reconstruct and render the complete scene with background.</p>
+                    <p class="text-lg text-gray-700 mb-6">The VVC26 dataset contains calibrated dynamic multi-view RGB videos. All methods reconstruct and render complete RGB scenes with background.</p>
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div class="p-5 bg-purple-50 rounded-xl border-l-4 border-purple-500">
                             <h3 class="font-bold text-lg text-gray-800 mb-2">Compression Track</h3>
@@ -200,9 +200,6 @@
 └── time_offsets.json    # camera/frame synchronization</pre></div>
                         </div>
                     </div>
-                    <div class="mt-6 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
-                        <p class="text-sm text-gray-700"><strong>Note:</strong> There is no <span class="mono-font">masks/</span> folder in VVC26. Rendered outputs should include foreground and background.</p>
-                    </div>
                 </div>
             </section>
 
@@ -211,7 +208,7 @@
                 <div class="glass-card rounded-2xl p-8">
                     <div class="mb-6 p-4 bg-gray-50 rounded-lg">
                         <p class="text-gray-700"><strong>Metrics:</strong> PSNR, SSIM, and LPIPS on official held-out test views.</p>
-                        <p class="text-gray-700"><strong>Region:</strong> Full RGB image evaluation, including background. No foreground masks are used.</p>
+                        <p class='text-gray-700'><strong>Region:</strong> Full RGB image evaluation, including foreground and background regions.</p>
                     </div>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
@@ -250,7 +247,7 @@
                                     <li>Final representation must be below an average <b>200 KB/frame</b>.</li>
                                     <li>Render full RGB images for all official test views.</li>
                                     <li>Submit model artifacts, rendering scripts, environment file, rendered results, and a draft technical report.</li>
-                                    <li>Winning teams submit final ACM-formatted technical reports for inclusion in the SIGGRAPH Asia conference program/proceedings.</li>
+                                    <li>Winning teams submit final ACM-formatted technical reports for inclusion in the SIGGRAPH Asia workshop proceedings.</li>
                                 </ul>
                             </div>
                         </div>
@@ -272,9 +269,8 @@
                                 <ul class="space-y-2 text-gray-600">
                                     <li>Use only the provided sparse training views for reconstruction.</li>
                                     <li>Render full RGB images for all official test views.</li>
-                                    <li>No foreground masks are provided or used for evaluation.</li>
                                     <li>Submit rendered results and a draft technical report.</li>
-                                    <li>Winning teams submit final ACM-formatted technical reports for inclusion in the SIGGRAPH Asia conference program/proceedings.</li>
+                                    <li>Winning teams submit final ACM-formatted technical reports for inclusion in the SIGGRAPH Asia workshop proceedings.</li>
                                 </ul>
                             </div>
                         </div>
@@ -285,11 +281,10 @@
             <section id="submission" class="pt-20">
                 <h2 class="section-heading">Submission Guidelines</h2>
                 <div class="glass-card rounded-2xl p-8">
-                    <div class="tba-box mb-6">SSL / Linklings System Link TBA</div>
+                    <div class="tba-box mb-6">SIGA Submission System Link TBA</div>
                     <div class="max-w-3xl mx-auto text-center text-lg text-gray-700 space-y-3">
-                        <p>Registration and submissions will be handled through the official SIGGRAPH Asia SSL / Linklings system.</p>
-                        <p class="font-semibold text-gray-800">Google Forms will not be used for registration or submission in VVC26.</p>
-                        <p>Winning teams' technical reports will follow the SIGGRAPH Asia publication workflow.</p>
+                        <p>Registration and submissions will be handled through the official SIGA system.</p>
+                        <p>Winning teams' technical reports will follow the SIGGRAPH Asia workshop proceedings workflow.</p>
                     </div>
                 </div>
             </section>
