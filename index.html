@@ -101,7 +101,7 @@
                 <h2 class="section-heading">Overview</h2>
                 <div class="glass-card rounded-2xl p-8">
                     <p class="text-xl leading-relaxed mb-6 text-gray-700">
-                        The Volumetric Video Challenge Workshop 2026 aims to accelerate the transition of volumetric video technology from laboratory prototypes to practical, scalable, and deployable systems, supporting advances in immersive and interactive experiences. Following the successful inaugural challenge held at SIGGRAPH Asia 2025, the workshop will feature the second edition of the Volumetric Video Challenge, together with invited keynote talks highlighting the latest developments in volumetric video. This year's challenge focuses on two key problems: <a href="#challenges" class="font-bold text-purple-600 hover:text-purple-800 underline decoration-2 underline-offset-2">volumetric video compression</a> and <a href="#challenges" class="font-bold text-purple-600 hover:text-purple-800 underline decoration-2 underline-offset-2">sparse-view volumetric video reconstruction</a>. The challenge evaluates submissions on an expanded high-quality multi-view benchmark built upon the SIGGRAPH Asia 2025 dataset and augmented with additional captures from the SelfCap dataset.
+                        The Volumetric Video Challenge Workshop 2026 aims to accelerate the transition of volumetric video technology from laboratory prototypes to practical, scalable, and deployable systems, supporting advances in immersive and interactive experiences. Following the successful inaugural challenge held at SIGGRAPH Asia 2025, the workshop will feature the second edition of the Volumetric Video Challenge, together with invited keynote talks highlighting the latest developments in volumetric video. This year's challenge focuses on two key problems: <a href="#challenges" class="font-bold text-purple-600 hover:text-purple-800 underline decoration-2 underline-offset-2">volumetric video compression</a> and <a href="#challenges" class="font-bold text-purple-600 hover:text-purple-800 underline decoration-2 underline-offset-2">sparse-view volumetric video reconstruction</a>. The challenge evaluates submissions on an expanded high-quality multi-view benchmark built upon the SIGGRAPH Asia 2025 dataset.
                     </p>
                     <div class="mb-8 flex flex-wrap gap-3">
                         <a href="https://forms.gle/iqTJjmLCxTYzYVHK6" target="_blank" rel="noopener" class="primary-button">Register Now</a>
@@ -138,6 +138,7 @@
                         <ul class="text-sm text-gray-600 space-y-2">
                             <li><b>Input:</b> Calibrated multi-view RGB videos.</li>
                             <li><b>Resources:</b> Training/test camera parameters and synchronization metadata.</li>
+                            <li><b>Test cases:</b> Only SIGGRAPH Asia cases are required; SelfCap cases are not used.</li>
                             <li><b>Submission:</b> Rendered test views, model artifacts, rendering scripts, and a technical report.</li>
                         </ul>
                     </div>
@@ -160,10 +161,16 @@
                     <div class="mb-6">
                         <a href="https://huggingface.co/datasets/zju3dv/SiggraphAsia2026VVC" target="_blank" rel="noopener" class="primary-button">Download Dataset</a>
                     </div>
+                    <div class="mb-8 p-5 md:p-6 bg-pink-50 rounded-xl border-l-4 border-pink-500">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Important Test-Set Update</h3>
+                        <p class="text-gray-700 mb-3"><b>Compression Track:</b> SelfCap data are not required. Please submit results only for the valid SIGGRAPH Asia test cases.</p>
+                        <p class="text-gray-700 mb-3"><b>Sparse-View Track:</b> Due to a data leakage issue, the following SelfCap cases have been removed from the test set: <span class="mono-font text-sm">0512_bike</span>, <span class="mono-font text-sm">0525_corgi</span>, and <span class="mono-font text-sm">0811_yoga</span>.</p>
+                        <p class="text-gray-700">Do not submit results for these three cases. Submit results only for the remaining valid test cases. We apologize for any inconvenience and appreciate your understanding.</p>
+                    </div>
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div class="p-5 bg-purple-50 rounded-xl border-l-4 border-purple-500">
                             <h3 class="font-bold text-lg text-gray-800 mb-2">Compression Track</h3>
-                            <p class="text-gray-600">Each sequence includes calibrated multi-view training RGB videos, training and test camera parameters, and synchronization metadata.</p>
+                            <p class="text-gray-600">Each valid SIGGRAPH Asia sequence includes calibrated multi-view training RGB videos, training and test camera parameters, and synchronization metadata. SelfCap data are not required for this track.</p>
                         </div>
                         <div class="p-5 bg-pink-50 rounded-xl border-l-4 border-pink-500">
                             <h3 class="font-bold text-lg text-gray-800 mb-2">Sparse-View Track</h3>
@@ -227,13 +234,14 @@
                                     <li>Training-view RGB videos or frames.</li>
                                     <li>Training and test camera parameters.</li>
                                     <li>Time offsets or synchronization metadata when needed.</li>
+                                    <li>SIGGRAPH Asia cases only; SelfCap data are not required.</li>
                                 </ul>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-gray-800 mb-3">Requirements (Tentative)</h4>
+                                <h4 class="font-bold text-lg text-gray-800 mb-3">Requirements</h4>
                                 <ul class="space-y-2 text-gray-600">
                                     <li>Final representation must be below an average <b>200 KB/frame</b>.</li>
-                                    <li>Render full RGB images for all official test views.</li>
+                                    <li>Render full-RGB JPEG images for all official test views at frame indices <span class="mono-font text-sm">0, 10, 20, ...</span>.</li>
                                     <li>Submit model artifacts, rendering scripts, environment file, rendered results, and a draft technical report.</li>
                                     <li>Winning teams submit final ACM-formatted technical reports for inclusion in the SIGGRAPH Asia workshop proceedings.</li>
                                 </ul>
@@ -250,12 +258,13 @@
                                     <li>Training camera intrinsics and extrinsics.</li>
                                     <li>Test camera intrinsics and extrinsics for rendering.</li>
                                     <li>Time offsets or synchronization metadata when needed.</li>
+                                    <li>The SelfCap cases <span class="mono-font text-sm">0512_bike</span>, <span class="mono-font text-sm">0525_corgi</span>, and <span class="mono-font text-sm">0811_yoga</span> are excluded from submission.</li>
                                 </ul>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-gray-800 mb-3">Requirements (Tentative)</h4>
+                                <h4 class="font-bold text-lg text-gray-800 mb-3">Requirements</h4>
                                 <ul class="space-y-2 text-gray-600">
-                                    <li>Render full RGB images for all official test views.</li>
+                                    <li>Render full-RGB JPEG images for all official test views at frame indices <span class="mono-font text-sm">0, 10, 20, ...</span>.</li>
                                     <li>Submit rendered results and a draft technical report.</li>
                                     <li>Winning teams submit final ACM-formatted technical reports for inclusion in the SIGGRAPH Asia workshop proceedings.</li>
                                 </ul>
@@ -267,11 +276,66 @@
 
             <section id="submission" class="pt-20">
                 <h2 class="section-heading">Submission Guidelines</h2>
-                <div class="glass-card rounded-2xl p-8">
-                    <div class="tba-box mb-6">Result Submission System Link TBA</div>
-                    <div class="max-w-3xl mx-auto text-center text-lg text-gray-700 space-y-4">
-                        <p>Challenge registration is handled through the Google Form below.</p>
-                        <a href="https://forms.gle/iqTJjmLCxTYzYVHK6" target="_blank" rel="noopener" class="primary-button">Registration Form</a>
+                <div class="glass-card rounded-2xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 p-5 md:p-6 mb-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-200">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-1">Registration and Result Submission</h3>
+                            <p class="text-gray-600">Register through the Google Form, then upload challenge results through the official VVC26 submission portal.</p>
+                            <p class="text-gray-600 mt-2"><b>Account identification:</b> Please use either your registration email or your registered Team Name as the submission portal username so that we can identify the team responsible for each upload.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 md:flex-nowrap md:justify-end">
+                            <a href="https://forms.gle/iqTJjmLCxTYzYVHK6" target="_blank" rel="noopener" class="inline-block px-5 py-3 rounded-lg font-semibold border-2 border-purple-600 text-purple-600 hover:bg-white transition-colors no-underline whitespace-nowrap">Registration Form</a>
+                            <a href="https://8.136.221.94" target="_blank" rel="noopener" class="primary-button whitespace-nowrap">Submission Portal</a>
+                        </div>
+                    </div>
+
+                    <div class="p-5 md:p-6 mb-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Required Archive Structure</h3>
+                        <p class="text-gray-600 mb-2">Upload one archive named <span class="mono-font text-sm">submission.zip</span>. The <span class="mono-font text-sm">team_name.txt</span> file must contain the exact Team Name used in the registration form. Keep both track folders in the archive and add materials for the track or tracks you enter.</p>
+                        <p class="text-gray-600 mb-4"><b>Image format and sampling are mandatory:</b> rendered results must use JPEG format with the <span class="mono-font text-sm">.jpg</span> extension. Submit one rendered frame for every 10 source frames at indices <span class="mono-font text-sm">0, 10, 20, ...</span>. Filenames must use six-digit zero padding (<span class="mono-font text-sm">{frame:06d}</span>), such as <span class="mono-font text-sm">000000.jpg</span> and <span class="mono-font text-sm">000010.jpg</span>.</p>
+                        <div class="code-block mono-font"><pre>submission.zip
+├── team_name.txt          # exact registered Team Name
+├── compressionTrack/
+│   ├── data/
+│   ├── renders/&lt;scene&gt;/&lt;view&gt;/&lt;frame:06d&gt;.jpg
+│   └── code/
+└── sparseViewTrack/
+    └── renders/&lt;scene&gt;/&lt;view&gt;/&lt;frame:06d&gt;.jpg</pre></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-5 md:p-6 bg-white rounded-xl border-t-4 border-purple-500 shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Sparse-View Track</h3>
+                            <ul class="space-y-3 text-gray-600 mb-5">
+                                <li><b>Upload:</b> Full-RGB JPEG renders for every official test view, sampled once every 10 frames at indices <span class="mono-font text-sm">0, 10, 20, ...</span>.</li>
+                                <li>No model, decoder, rendering code, or runtime environment is required.</li>
+                                <li>Keep the official scene, view, and frame names so that each image can be matched to the ground truth.</li>
+                            </ul>
+                            <div class="code-block mono-font"><pre>sparseViewTrack/
+└── renders/
+    └── &lt;scene&gt;/&lt;view&gt;/&lt;frame:06d&gt;.jpg</pre></div>
+                        </div>
+
+                        <div class="p-5 md:p-6 bg-white rounded-xl border-t-4 border-pink-500 shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Compression Track</h3>
+                            <ul class="space-y-3 text-gray-600 mb-5">
+                                <li><b>Upload:</b> Test-view JPEG renders sampled once every 10 frames, the compressed 4DGS/model representation, and a decoder/render script that reproduces the uploaded renders.</li>
+                                <li>All scene-dependent models and assets must be stored under <span class="mono-font text-sm">data/</span> and are counted toward the average <b>200 KB/frame</b> limit.</li>
+                                <li><span class="mono-font text-sm">code/</span> must contain only scene-independent decoding, rendering, and environment setup code. Scene data may not be embedded in code or downloaded at runtime.</li>
+                                <li>Winning teams will undergo a reproducibility check in which organizers rerender the submitted model and compare it with the uploaded test-view results.</li>
+                            </ul>
+                            <div class="code-block mono-font"><pre>compressionTrack/
+├── data/       # compressed model and scene assets
+├── renders/
+│   └── &lt;scene&gt;/&lt;view&gt;/&lt;frame:06d&gt;.jpg
+└── code/       # decoder, renderer, and setup</pre></div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 md:p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Runtime Environment</h3>
+                        <p class="text-gray-600 mb-3">Compression submissions should run in the organizers' baseline environment by default. If only a few additional packages are needed, include their installation commands in the setup step that runs before the render script.</p>
+                        <p class="text-gray-600">If the environment differs substantially, include a reproducible <span class="mono-font text-sm">uv</span>, <span class="mono-font text-sm">conda</span>, or <span class="mono-font text-sm">Docker</span> specification. Organizers will validate the submitted environment and rendering pipeline for winning teams.</p>
                     </div>
                 </div>
             </section>
