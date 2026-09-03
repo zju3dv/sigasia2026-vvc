@@ -347,10 +347,30 @@
                         </div>
                     </div>
 
-                    <div class="p-5 md:p-6 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="p-5 md:p-6 mb-8 bg-gray-50 rounded-xl border border-gray-200">
                         <h3 class="text-xl font-bold text-gray-800 mb-3">Runtime Environment</h3>
                         <p class="text-gray-600 mb-3">Compression submissions should run in the organizers' baseline environment by default. If only a few additional packages are needed, include their installation commands in the setup step that runs before the render script.</p>
                         <p class="text-gray-600">If the environment differs substantially, include a reproducible <span class="mono-font text-sm">uv</span>, <span class="mono-font text-sm">conda</span>, or <span class="mono-font text-sm">Docker</span> specification. Organizers will validate the submitted environment and rendering pipeline for winning teams.</p>
+                    </div>
+
+                    <div class="p-5 md:p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-800 mb-5">Submission Q&amp;A</h3>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Q1. How should the submitted JPEG images be encoded?</h4>
+                            <p class="text-gray-600 mb-4">To ensure consistent JPEG encoding across all submissions, please use OpenCV's default JPEG writer for every submitted render:</p>
+                            <div class="code-block mono-font"><pre>cv2.imwrite('a.jpg', img)</pre></div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">Q2. How should camera distortion be handled?</h4>
+                            <p class="text-gray-600 mb-3"><b>SIGGRAPH Asia data:</b> The images have already been processed for camera distortion. Please use the provided camera parameters directly.</p>
+                            <p class="text-gray-600 mb-3"><b>SelfCap data:</b> The cameras contain lens distortion. When rendering your model, use the test-view extrinsics together with the corresponding intrinsic parameters (<span class="mono-font text-sm">K</span>, <span class="mono-font text-sm">H</span>, and <span class="mono-font text-sm">W</span>), but ignore the distortion coefficients. Do not apply lens distortion to the submitted renders.</p>
+                            <p class="text-gray-600"><b>Evaluation:</b> We will undistort the SelfCap ground-truth images using the original camera calibration and image dimensions. PSNR, SSIM, and LPIPS will be computed only over the valid image region remaining after undistortion.</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">Q3. What data may be used for each test case?</h4>
+                            <p class="text-gray-600 mb-3"><b>Pipeline input:</b> For each test case, the entire pipeline may use only the training views provided for that case as input.</p>
+                            <p class="text-gray-600"><b>Generative-prior training:</b> A generative prior may be trained using only the training views released for that track and external datasets that contain no SIGGRAPH Asia or SelfCap data.</p>
+                        </div>
                     </div>
                 </div>
             </section>
