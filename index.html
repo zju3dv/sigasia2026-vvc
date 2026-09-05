@@ -211,9 +211,16 @@
                 <div class="glass-card rounded-2xl p-8">
                     <div class="mb-6 p-4 bg-gray-50 rounded-lg">
                         <p class="text-gray-700"><strong>Metrics:</strong> Average PSNR, SSIM, and LPIPS across all official test views from all scenes.</p>
-                        <p class='text-gray-700'><strong>Region:</strong> Full RGB image evaluation, including foreground and background regions.</p>
+                        <p class='text-gray-700'><strong>Compression Track:</strong> Metrics are computed on the full RGB images, including foreground and background regions.</p>
+                        <p class='text-gray-700'><strong>Sparse-View Track:</strong> Metrics are computed separately on the full RGB images and the foreground regions.</p>
                     </div>
                     <div class="p-4 bg-gray-100 rounded-lg mono-font text-sm mb-6">Final Rank = (Rank_PSNR + Rank_SSIM + Rank_LPIPS) / 3</div>
+                    <div class="mb-6 p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-500">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Sparse-View Final Score</h3>
+                        <p class="text-gray-700 mb-2">The full-image score and foreground score have equal weights in the final Sparse-View ranking.</p>
+                        <div class="mono-font text-sm text-gray-800 mb-2">Final Rank = (Rank_Full + Rank_Foreground) / 2</div>
+                        <p class="text-gray-600">For each region, the rank is computed from PSNR, SSIM, and LPIPS with equal weights.</p>
+                    </div>
                     <div>
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Compression Track Eligibility</h3>
                         <p class="text-gray-600 mb-3">To qualify for ranking, the average size per frame of a submission's scene-dependent artifacts must be below <b>200 KB/frame</b>. The average size per frame is calculated as the total size of these artifacts divided by the number of frames.</p>
@@ -369,12 +376,17 @@
                         <div class="mt-6 pt-6 border-t border-gray-200">
                             <h4 class="font-bold text-gray-800 mb-2">Q3. What data may be used for each test case?</h4>
                             <p class="text-gray-600 mb-3"><b>Pipeline input:</b> For each test case, the entire pipeline may use only the training views provided for that case as input.</p>
-                            <p class="text-gray-600"><b>Generative-prior training:</b> A generative prior may be trained using only the training views released for that track and external datasets that contain no SIGGRAPH Asia or SelfCap data.</p>
+                            <p class="text-gray-600"><b>Generative-prior training:</b> A generative prior may be trained using the training views released for the same track, but these views may only be used for training the prior, not for reconstructing or directly synthesizing a test case. External datasets are allowed only if they contain no SIGGRAPH Asia or SelfCap data.</p>
                         </div>
                         <div class="mt-6 pt-6 border-t border-gray-200">
                             <h4 class="font-bold text-gray-800 mb-2">Q4. Are multiple submissions allowed, and how are they ranked?</h4>
                             <p class="text-gray-600 mb-3"><b>Multiple submissions:</b> Yes. Participants may submit multiple times, subject to the four-hour interval between submissions, and there is no limit on the total number of submissions.</p>
                             <p class="text-gray-600 mb-3"><b>Final score:</b> The final score is based on the latest valid submission.</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">Q5. How is the Sparse-View Track evaluated?</h4>
+                            <p class="text-gray-600 mb-3"><b>Two evaluation regions:</b> We evaluate both the full RGB image and the foreground region using PSNR, SSIM, and LPIPS.</p>
+                            <p class="text-gray-600"><b>Equal weighting:</b> The full-image score and foreground score each contribute 50% to the final Sparse-View score.</p>
                         </div>
                     </div>
                 </div>
