@@ -343,8 +343,7 @@
                                 <li><b>Upload:</b> Test-view JPEG renders sampled once every 10 frames, the compressed 4DGS/model representation, and a decoder/render script that reproduces the uploaded renders.</li>
                                 <li>Include submissions for all released SIGGRAPH Asia and SelfCap test cases.</li>
                                 <li>All scene-dependent models and assets must be stored under <span class="mono-font text-sm">data/</span> and are counted toward the average <b>200 KB/frame</b> limit.</li>
-                                <li><span class="mono-font text-sm">code/</span> must contain only scene-independent decoding, rendering, and environment setup code. Scene data may not be embedded in code or downloaded at runtime.</li>
-                                <li>Winning teams will undergo a reproducibility check in which organizers rerender the submitted model and compare it with the uploaded test-view results.</li>
+                                <li><b>Reproducibility check:</b> Put only the decoder, renderer, and environment setup in <span class="mono-font text-sm">code/</span>. Do not put scene data in <span class="mono-font text-sm">code/</span> or download scene data when the code runs. For winning teams, we will run the submitted code with the submitted compressed model and compare the new renders with the uploaded test-view images. <b>This check confirms that the uploaded images can be reproduced from the submitted compressed model.</b></li>
                             </ul>
                             <div class="code-block mono-font"><pre>compressionTrack/
 ├── data/       # compressed model and scene assets
