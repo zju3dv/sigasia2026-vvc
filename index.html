@@ -42,6 +42,8 @@
         .speaker-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.1); }
         .avatar-placeholder { width: 96px; height: 96px; border-radius: 999px; margin: 0 auto 1rem; display: grid; place-items: center; color: #667eea; font-weight: 800; background: linear-gradient(135deg, #eef2ff, #f5f3ff); border: 3px solid #e9d5ff; }
         .person-photo { width: 96px; height: 96px; border-radius: 999px; margin: 0 auto 1rem; object-fit: cover; }
+        .yuan-photo { object-position: 50% 5%; }
+        .speaker-duo-photo { width: 96px; height: 96px; border-radius: 999px; margin: 0 auto 1rem; object-fit: cover; object-position: 50% 15%; }
         .tba-box { border: 2px dashed #c4b5fd; background: #f5f3ff; color: #6d28d9; border-radius: 12px; padding: 2.5rem; text-align: center; font-size: 1.5rem; font-weight: 800; }
     </style>
 </head>
@@ -56,30 +58,32 @@
                     <div class="text-sm text-gray-500">SIGGRAPH Asia 2026 Workshops</div>
                 </div>
             </a>
-            <nav class="hidden md:flex space-x-8">
+            <nav class="hidden lg:flex gap-5 text-sm">
                 <a href="#overview">Overview</a>
+                <a href="#dates">Important Dates</a>
+                <a href="#awards">Awards</a>
+                <a href="#leaderboard">Leaderboard</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#speakers">Speakers</a>
                 <a href="#challenges">Challenges</a>
                 <a href="#dataset">Dataset</a>
                 <a href="#evaluation">Evaluation</a>
-                <a href="#dates">Important Dates</a>
-                <a href="#awards">Awards</a>
-                <a href="#speakers">Speakers</a>
-                <a href="#schedule">Schedule</a>
                 <a href="#organizers">Organizers</a>
             </nav>
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100" type="button" aria-label="Open menu">
+            <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg hover:bg-gray-100" type="button" aria-label="Open menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white/90 backdrop-blur-sm border-t">
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 bg-white/90 backdrop-blur-sm border-t">
             <a href="#overview" class="block py-3 text-gray-600 hover:text-purple-600">Overview</a>
+            <a href="#dates" class="block py-3 text-gray-600 hover:text-purple-600">Important Dates</a>
+            <a href="#awards" class="block py-3 text-gray-600 hover:text-purple-600">Awards</a>
+            <a href="#leaderboard" class="block py-3 text-gray-600 hover:text-purple-600">Leaderboard</a>
+            <a href="#schedule" class="block py-3 text-gray-600 hover:text-purple-600">Schedule</a>
+            <a href="#speakers" class="block py-3 text-gray-600 hover:text-purple-600">Speakers</a>
             <a href="#challenges" class="block py-3 text-gray-600 hover:text-purple-600">Challenges</a>
             <a href="#dataset" class="block py-3 text-gray-600 hover:text-purple-600">Dataset</a>
             <a href="#evaluation" class="block py-3 text-gray-600 hover:text-purple-600">Evaluation</a>
-            <a href="#dates" class="block py-3 text-gray-600 hover:text-purple-600">Important Dates</a>
-            <a href="#awards" class="block py-3 text-gray-600 hover:text-purple-600">Awards</a>
-            <a href="#speakers" class="block py-3 text-gray-600 hover:text-purple-600">Speakers</a>
-            <a href="#schedule" class="block py-3 text-gray-600 hover:text-purple-600">Schedule</a>
             <a href="#organizers" class="block py-3 text-gray-600 hover:text-purple-600">Organizers</a>
         </div>
     </header>
@@ -125,6 +129,141 @@
                         <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Results Announcement</h4><p class="text-gray-600">Challenge results announced</p></div><span class="text-purple-600 font-semibold">19 September 2026</span></div></div>
                         <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Camera Ready Deadline</h4><p class="text-gray-600">Final camera-ready reports due</p></div><span class="text-purple-600 font-semibold">23 September 2026</span></div></div>
                         <div class="timeline-item"><div class="timeline-dot"></div><div class="flex items-center justify-between flex-wrap gap-3"><div><h4 class="font-bold text-lg text-gray-800">Workshop &amp; Awards</h4><p class="text-gray-600">Workshop and awards ceremony</p></div><span class="text-purple-600 font-semibold">1-4 December 2026</span></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="awards" class="pt-20">
+                <h2 class="section-heading">Awards</h2>
+                <div class="text-center mb-8">
+                    <p class="text-lg text-gray-600">Each track features two prizes.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                    <div class="speaker-card"><h3 class="text-2xl font-bold text-gray-800 mb-2">First Prize</h3><p class="text-4xl font-bold text-purple-600">$2,500</p><p class="text-gray-500 mt-2">Per track</p></div>
+                    <div class="speaker-card"><h3 class="text-2xl font-bold text-gray-800 mb-2">Second Prize</h3><p class="text-4xl font-bold text-gray-600">$1,500</p><p class="text-gray-500 mt-2">Per track</p></div>
+                </div>
+            </section>
+
+            <section id="leaderboard" class="pt-20">
+                <h2 class="section-heading">Leaderboard</h2>
+                <p class="text-lg text-gray-600 mb-8">Official rankings based on PSNR, SSIM, and LPIPS metric ranks.</p>
+                <p class="text-sm text-gray-500 -mt-5 mb-8">Numbers in brackets are per-metric ranks. Weighted Rank is the average of three metric ranks for Compression and six full-image/foreground metric ranks for Sparse-View. Personal submission accounts are displayed as Name (Registered Team) when a registration match is available.</p>
+                <div class="space-y-8">
+                    <div class="glass-card rounded-2xl p-6 md:p-8">
+                        <div class="flex items-center justify-between gap-4 mb-5">
+                            <h3 class="text-2xl font-bold text-gray-800">Compression Track</h3>
+                            <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-bold">Final Results</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-[820px] text-left text-sm">
+                                <thead class="border-b-2 border-gray-200 text-gray-700">
+                                    <tr>
+                                        <th class="py-3 pr-4">#</th>
+                                        <th class="py-3 pr-4">Team</th>
+                                        <th class="py-3 pr-4">PSNR</th>
+                                        <th class="py-3 pr-4">SSIM</th>
+                                        <th class="py-3 pr-4">LPIPS</th>
+                                        <th class="py-3 pr-4">Rank Sum</th>
+                                        <th class="py-3">Weighted Rank</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 text-gray-600">
+                                    <tr class="bg-purple-50/60"><td class="py-3 pr-4 font-bold text-purple-700">🥇 1</td><td class="py-3 pr-4 font-semibold">PICOMR</td><td class="py-3 pr-4">27.50316 [1]</td><td class="py-3 pr-4">0.90483 [1]</td><td class="py-3 pr-4">0.20208 [1]</td><td class="py-3 pr-4">3</td><td class="py-3 font-bold">1.000</td></tr>
+                                    <tr class="bg-pink-50/50"><td class="py-3 pr-4 font-bold text-pink-700">🥈 2</td><td class="py-3 pr-4 font-semibold">Xipeng Fan (SZUHCR)</td><td class="py-3 pr-4">27.38430 [2]</td><td class="py-3 pr-4">0.90042 [2]</td><td class="py-3 pr-4">0.23734 [3]</td><td class="py-3 pr-4">7</td><td class="py-3 font-bold">2.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">3</td><td class="py-3 pr-4">CheerUp</td><td class="py-3 pr-4">26.21281 [3]</td><td class="py-3 pr-4">0.88932 [5]</td><td class="py-3 pr-4">0.25452 [4]</td><td class="py-3 pr-4">12</td><td class="py-3">4.000</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">4</td><td class="py-3 pr-4">Hanyang Kong (KingKong)</td><td class="py-3 pr-4">25.59877 [6]</td><td class="py-3 pr-4">0.89183 [4]</td><td class="py-3 pr-4">0.23405 [2]</td><td class="py-3 pr-4">12</td><td class="py-3">4.000</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">5</td><td class="py-3 pr-4">fnYang</td><td class="py-3 pr-4">25.98308 [4]</td><td class="py-3 pr-4">0.89353 [3]</td><td class="py-3 pr-4">0.27066 [6]</td><td class="py-3 pr-4">13</td><td class="py-3">4.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">6</td><td class="py-3 pr-4">Batofgo</td><td class="py-3 pr-4">25.83060 [5]</td><td class="py-3 pr-4">0.88658 [6]</td><td class="py-3 pr-4">0.26538 [5]</td><td class="py-3 pr-4">16</td><td class="py-3">5.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">7</td><td class="py-3 pr-4">SceneCodec</td><td class="py-3 pr-4">23.23818 [7]</td><td class="py-3 pr-4">0.82215 [8]</td><td class="py-3 pr-4">0.31104 [7]</td><td class="py-3 pr-4">22</td><td class="py-3">7.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">8</td><td class="py-3 pr-4">AlgorithmEngineering</td><td class="py-3 pr-4">20.74934 [8]</td><td class="py-3 pr-4">0.82937 [7]</td><td class="py-3 pr-4">0.32213 [8]</td><td class="py-3 pr-4">23</td><td class="py-3">7.667</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 md:p-8">
+                        <div class="flex items-center justify-between gap-4 mb-5">
+                            <h3 class="text-2xl font-bold text-gray-800">Sparse-View Track</h3>
+                            <span class="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-sm font-bold">Final Results</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-[1240px] text-left text-sm">
+                                <thead class="border-b-2 border-gray-200 text-gray-700">
+                                    <tr>
+                                        <th class="py-3 pr-4">#</th>
+                                        <th class="py-3 pr-4">Team</th>
+                                        <th class="py-3 pr-4">PSNR</th>
+                                        <th class="py-3 pr-4">SSIM</th>
+                                        <th class="py-3 pr-4">LPIPS</th>
+                                        <th class="py-3 pr-4">fgPSNR</th>
+                                        <th class="py-3 pr-4">fgSSIM</th>
+                                        <th class="py-3 pr-4">fgLPIPS</th>
+                                        <th class="py-3 pr-4">Rank Sum</th>
+                                        <th class="py-3">Weighted Rank</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 text-gray-600">
+                                    <tr class="bg-purple-50/60"><td class="py-3 pr-4 font-bold text-purple-700">🥇 1</td><td class="py-3 pr-4 font-semibold">Shengqi Wang (BlindSpot)</td><td class="py-3 pr-4">30.04181 [1]</td><td class="py-3 pr-4">0.91765 [7]</td><td class="py-3 pr-4">0.17940 [1]</td><td class="py-3 pr-4">27.88172 [1]</td><td class="py-3 pr-4">0.87217 [2]</td><td class="py-3 pr-4">0.21208 [1]</td><td class="py-3 pr-4">13</td><td class="py-3 font-bold">2.167</td></tr>
+                                    <tr class="bg-pink-50/50"><td class="py-3 pr-4 font-bold text-pink-700">🥈 2</td><td class="py-3 pr-4 font-semibold">Yunqi Gao (SparseSight)</td><td class="py-3 pr-4">29.15414 [2]</td><td class="py-3 pr-4">0.93633 [1]</td><td class="py-3 pr-4">0.19749 [3]</td><td class="py-3 pr-4">26.86454 [3]</td><td class="py-3 pr-4">0.88393 [1]</td><td class="py-3 pr-4">0.24424 [4]</td><td class="py-3 pr-4">14</td><td class="py-3 font-bold">2.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">3</td><td class="py-3 pr-4">Doreen071</td><td class="py-3 pr-4">27.04109 [5]</td><td class="py-3 pr-4">0.92867 [2]</td><td class="py-3 pr-4">0.20912 [4]</td><td class="py-3 pr-4">25.77871 [4]</td><td class="py-3 pr-4">0.85172 [5]</td><td class="py-3 pr-4">0.22394 [2]</td><td class="py-3 pr-4">22</td><td class="py-3">3.667</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">4</td><td class="py-3 pr-4">Hanyang Kong (KingKong)</td><td class="py-3 pr-4">28.75386 [3]</td><td class="py-3 pr-4">0.92641 [3]</td><td class="py-3 pr-4">0.22858 [5]</td><td class="py-3 pr-4">27.22512 [2]</td><td class="py-3 pr-4">0.86274 [4]</td><td class="py-3 pr-4">0.28640 [8]</td><td class="py-3 pr-4">25</td><td class="py-3">4.167</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">5</td><td class="py-3 pr-4">RecGen4D</td><td class="py-3 pr-4">25.67381 [6]</td><td class="py-3 pr-4">0.92059 [6]</td><td class="py-3 pr-4">0.24612 [8]</td><td class="py-3 pr-4">25.56873 [5]</td><td class="py-3 pr-4">0.86308 [3]</td><td class="py-3 pr-4">0.28950 [9]</td><td class="py-3 pr-4">37</td><td class="py-3">6.167</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">6</td><td class="py-3 pr-4">dari</td><td class="py-3 pr-4">25.24633 [7]</td><td class="py-3 pr-4">0.92378 [4]</td><td class="py-3 pr-4">0.23741 [6]</td><td class="py-3 pr-4">24.57443 [8]</td><td class="py-3 pr-4">0.82631 [12]</td><td class="py-3 pr-4">0.24534 [5]</td><td class="py-3 pr-4">42</td><td class="py-3">7.000</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">7</td><td class="py-3 pr-4">Random</td><td class="py-3 pr-4">25.22431 [8]</td><td class="py-3 pr-4">0.91293 [10]</td><td class="py-3 pr-4">0.27199 [11]</td><td class="py-3 pr-4">24.93789 [6]</td><td class="py-3 pr-4">0.84133 [9]</td><td class="py-3 pr-4">0.25682 [7]</td><td class="py-3 pr-4">51</td><td class="py-3">8.500</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">8</td><td class="py-3 pr-4">June Kim (SNOW)</td><td class="py-3 pr-4">24.80104 [10]</td><td class="py-3 pr-4">0.92240 [5]</td><td class="py-3 pr-4">0.23788 [7]</td><td class="py-3 pr-4">24.11465 [11]</td><td class="py-3 pr-4">0.84532 [6]</td><td class="py-3 pr-4">0.40322 [13]</td><td class="py-3 pr-4">52</td><td class="py-3">8.667</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">9</td><td class="py-3 pr-4">mmm</td><td class="py-3 pr-4">24.99320 [9]</td><td class="py-3 pr-4">0.91218 [11]</td><td class="py-3 pr-4">0.27221 [12]</td><td class="py-3 pr-4">24.93354 [7]</td><td class="py-3 pr-4">0.84135 [8]</td><td class="py-3 pr-4">0.25668 [6]</td><td class="py-3 pr-4">53</td><td class="py-3">8.833</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">10</td><td class="py-3 pr-4">Mingjian Liang (MingzaiTeam)</td><td class="py-3 pr-4">27.83229 [4]</td><td class="py-3 pr-4">0.91729 [8]</td><td class="py-3 pr-4">0.24975 [9]</td><td class="py-3 pr-4">23.91924 [12]</td><td class="py-3 pr-4">0.82732 [11]</td><td class="py-3 pr-4">0.39530 [12]</td><td class="py-3 pr-4">56</td><td class="py-3">9.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">11</td><td class="py-3 pr-4">Oleg Semer (SlK)</td><td class="py-3 pr-4">24.20276 [11]</td><td class="py-3 pr-4">0.88650 [16]</td><td class="py-3 pr-4">0.19430 [2]</td><td class="py-3 pr-4">23.66514 [13]</td><td class="py-3 pr-4">0.79320 [14]</td><td class="py-3 pr-4">0.22562 [3]</td><td class="py-3 pr-4">59</td><td class="py-3">9.833</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">12</td><td class="py-3 pr-4">AwesomeGS</td><td class="py-3 pr-4">24.19371 [12]</td><td class="py-3 pr-4">0.91335 [9]</td><td class="py-3 pr-4">0.28096 [15]</td><td class="py-3 pr-4">24.28803 [9]</td><td class="py-3 pr-4">0.84229 [7]</td><td class="py-3 pr-4">0.38343 [11]</td><td class="py-3 pr-4">63</td><td class="py-3">10.500</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">13</td><td class="py-3 pr-4">RiseOfTheWhiteSun</td><td class="py-3 pr-4">23.24979 [14]</td><td class="py-3 pr-4">0.90403 [14]</td><td class="py-3 pr-4">0.26217 [10]</td><td class="py-3 pr-4">24.18268 [10]</td><td class="py-3 pr-4">0.83892 [10]</td><td class="py-3 pr-4">0.31215 [10]</td><td class="py-3 pr-4">68</td><td class="py-3">11.333</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">14</td><td class="py-3 pr-4">vvc_bbg</td><td class="py-3 pr-4">23.71288 [13]</td><td class="py-3 pr-4">0.91130 [12]</td><td class="py-3 pr-4">0.28468 [16]</td><td class="py-3 pr-4">21.96568 [14]</td><td class="py-3 pr-4">0.81148 [13]</td><td class="py-3 pr-4">0.54333 [16]</td><td class="py-3 pr-4">84</td><td class="py-3">14.000</td></tr>
+                                    <tr><td class="py-3 pr-4 font-bold">15</td><td class="py-3 pr-4">Guangmin Gao (Laosou1Wash1Wantong)</td><td class="py-3 pr-4">22.82178 [16]</td><td class="py-3 pr-4">0.90371 [15]</td><td class="py-3 pr-4">0.27626 [13]</td><td class="py-3 pr-4">21.58114 [15]</td><td class="py-3 pr-4">0.79055 [16]</td><td class="py-3 pr-4">0.46056 [14]</td><td class="py-3 pr-4">89</td><td class="py-3">14.833</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="schedule" class="pt-20">
+                <h2 class="section-heading">Workshop Schedule</h2>
+                <div class="glass-card rounded-2xl p-8"><div class="tba-box">Schedule TBA</div></div>
+            </section>
+
+            <section id="speakers" class="pt-20">
+                <h2 class="section-heading">Invited Speakers</h2>
+                <div class="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="speaker-card">
+                        <img class="person-photo yuan-photo" src="assets/images/speaker-yuan-liu.jpg" alt="Yuan Liu">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Yuan Liu</h3>
+                        <p class="text-sm text-gray-600 mb-1">HKUST</p>
+                        <p class="text-sm text-gray-500 mb-3">AP, Integrative Systems and Design</p>
+                        <p class="text-gray-500 mb-4">Talk title TBA</p>
+                        <a href="https://liuyuan-pal.github.io/" target="_blank" rel="noopener" class="text-purple-600 hover:text-purple-800 text-sm font-semibold">Homepage</a>
+                    </div>
+                    <div class="speaker-card">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <img class="speaker-duo-photo" src="assets/images/YuqiZhang.jpg" alt="Yuqi Zhang">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Yuqi Zhang</h3>
+                            </div>
+                            <div>
+                                <img class="speaker-duo-photo" src="assets/images/ShiXinTao.jpg" alt="Shixin Tao">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">Shixin Tao</h3>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-1">MediaStorm</p>
+                        <p class="text-sm text-gray-500 mb-3">Directors of <i>The Pigeon Ring</i> (鸽环)</p>
+                        <p class="text-gray-500 mb-4">Talk title TBA</p>
+                        <a href="https://english.news.cn/europe/20260913/2cccb2ce1d9b4351bdd9c3fb868b2897/c.html" target="_blank" rel="noopener" class="text-purple-600 hover:text-purple-800 text-sm font-semibold">The Pigeon Ring</a>
+                    </div>
+                    <div class="speaker-card">
+                        <div class="avatar-placeholder">TBA</div>
+                        <span class="inline-flex px-3 py-1 mb-3 rounded-full bg-gray-100 text-gray-600 text-xs font-bold uppercase">To Be Invited</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">TBA</h3>
+                        <p class="text-sm text-gray-600 mb-1">Affiliation TBA</p>
+                        <p class="text-sm text-gray-500 mb-3">Invited Speaker</p>
+                        <p class="text-gray-500 mb-4">Talk title TBA</p>
                     </div>
                 </div>
             </section>
@@ -389,27 +528,6 @@
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section id="awards" class="pt-20">
-                <h2 class="section-heading">Awards</h2>
-                <div class="text-center mb-8">
-                    <p class="text-lg text-gray-600">Each track features two prizes.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                    <div class="speaker-card"><h3 class="text-2xl font-bold text-gray-800 mb-2">First Prize</h3><p class="text-4xl font-bold text-purple-600">$2,500</p><p class="text-gray-500 mt-2">Per track</p></div>
-                    <div class="speaker-card"><h3 class="text-2xl font-bold text-gray-800 mb-2">Second Prize</h3><p class="text-4xl font-bold text-gray-600">$1,500</p><p class="text-gray-500 mt-2">Per track</p></div>
-                </div>
-            </section>
-
-            <section id="schedule" class="pt-20">
-                <h2 class="section-heading">Workshop Schedule</h2>
-                <div class="glass-card rounded-2xl p-8"><div class="tba-box">Schedule TBA</div></div>
-            </section>
-
-            <section id="speakers" class="pt-20">
-                <h2 class="section-heading">Keynote Speakers</h2>
-                <div class="glass-card rounded-2xl p-8"><div class="tba-box">TBA</div></div>
             </section>
 
             <section id="organizers" class="pt-20">
